@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/ssh/ninjaloot/git/ws/talks/harmful/hax0r.py.html</title>
+<meta name="Generator" content="Vim/7.3">
+<meta name="plugin-version" content="vim7.3_v12">
+<meta name="syntax" content="python">
+<meta name="settings" content="use_css,no_foldcolumn,expand_tabs,prevent_copy=">
+<meta name="colorscheme" content="badwolf">
+<style type="text/css">
+<!--
+pre { font-family: monospace; color: #f8f6f2; background-color: #1c1b1a; }
+body { font-family: monospace; color: #f8f6f2; background-color: #1c1b1a; }
+* { font-size: 1em; }
+.String { color: #f4cf86; }
+.Normal { color: #f8f6f2; background-color: #1c1b1a; padding-bottom: 1px; }
+.Statement { color: #ff2c4b; font-weight: bold; }
+.pythonBuiltinFunc { color: #ff9eb8; }
+.Special { color: #0a9dff; }
+.Identifier { color: #ffa724; }
+-->
+</style>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Statement">class</span> <span class="Identifier">StringFilter</span>(<span class="pythonBuiltinFunc">object</span>):
+    <span class="Statement">def</span> <span class="Identifier">cummings_filter</span>(<span class="Special">self</span>, string):
+        <span class="Statement">return</span> string<span class="Normal">.</span>lower()
+
+<span class="Statement">class</span> <span class="Identifier">StringFilterTests</span>(unittest<span class="Normal">.</span>TestType):
+    <span class="Statement">def</span> <span class="Identifier">test_cummings_filter</span>(<span class="Special">self</span>):
+        sf = StringFilter()
+        result = sf<span class="Normal">.</span>cummings_filter(<span class="String">'TeSt StrInG heHE'</span>)
+
+        <span class="Special">self</span><span class="Normal">.</span>assertEqual(result, <span class="String">'test string hehe'</span>)
+</pre>
+</body>
+</html>

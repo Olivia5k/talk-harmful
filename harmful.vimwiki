@@ -1,0 +1,311 @@
+= Intro =
+Hi. My name is Lowe Thiderman and I am about to give a talk about why I
+consider developers to be harmful. This is a very fast paced talk, so I would
+appreciate if questions could wait until after the talk.
+
+I would like to start with a show of hands:
+Who here is 100% sure that their code works perfectly?
+
+You guys that raised your hands can be one of three things:
+ * Really, really awesome
+ * Liars
+ * Fools
+
+The rest of you, you should bitch slap yourselves; physically or mentally;
+doesn't matter. You should have that feeling of confidence in your code. But,
+most people don't, and I think I know why.
+
+= Too many people don't test their code =
+Why does this matter? That's pretty simple actually. It's because...
+
+= You suck (...bitch) =
+And I say that in the most loving, respectful of ways. We developers have so
+much power to to create awesome things, but failure is unfortunately not only
+an option; it's the default. Developing code is incredibly powerful, but it is
+also very hard.  As a developer, when you are writing code, you are constantly
+only one keystroke away from a mistake, and you are with no doubt surrounded by
+errors. Syntax errors, parser errors, type errors, semantic errors. All of
+these, especially that pesky last one, are almost inevitable unless you write
+completely perfect code all the time. So, unless you are Linus Torvalds, this
+talk is most lovingly directed to you, and here is why:
+
+Testing your code is a very effective way to avoid errors as much as possible.
+
+So, before I continue telling you why and how you should stop sucking and be
+awesome instead, I would like to tell you what others I talk to usually say
+about testing. If I ask the straight-forward question "Do you test your code?"
+the answer is almost unequivocally "no". And, almost as unequivocal is the
+presence of some kind of excuse. These are some of the ones that I've heard:
+
+= The excuses =
+== It takes too much time ==
+Its hard to maintain a test base; its quicker to maintain the code only.
+Well, be that as it may, do you know what else takes a lot of time? Bugs. As I
+stated earlier, there are a lot of kinds of errors surrounding day to day
+development, and testing is a very good way of ironing most of them out. And
+while there is a time investment, it has a very good return rate, especially
+once you get comfortable with writing tests.
+
+A reason very related to that one is:
+
+== There is too much untested code already; writing tests would take months ==
+Actually a real problem. We had this problem at the company where I work; A lot
+of code, no tests, and really nowhere to start.  Fortunately, this is a problem
+of approach. I can tell you straight away that just sitting down and writing
+tests for four months is probably going to give you nothing. You simply cannot
+do everything at once.
+
+What you should do instead is to adapt the mindset that you should test all new
+features. So, before you consider your feature done and push it upstream, you
+should have tests that pass for the feature that you wrote.
+
+And, related to that, there is this kinda nice sentiment I've heard a couple of
+times that, whenever you are fixing some part of the code, you should make it
+just a little bit tidier and cleaner than when you found it. The same should
+apply to testing; when you fix a bug, add a test for it, if only to make sure
+that you actually fixed it properly.
+
+By following these two pretty simple guidelines, your code will eventually
+evolve a test base of the things you have deemed to be important.
+
+== We test it manually ==
+Manual testing is important, but not enough. Even in small iterations, you'll
+miss things unless you have a very large test procedure; almost a sitemap as a
+checklist. It grows over time and things will be skipped or not thoroughly
+checked. And, most importantly, it takes a shitload of important time to test
+everything all the time. Do you know what a properly instructed computer can do
+a million times faster than you? Everything. That includes running an
+instructed test suite.
+
+Don't get me wrong; as I said, manual testing is an important step in quality
+assurance. However, it cannot replace automated testing, and likewise,
+automated testing cannot replace manual testing. They need to coexist in
+balance and be complements to one another.
+
+== I wrote it; I know it works and/or it's already perfect ==
+This is actually a sign of a deeper problem. I could probably hold an entire
+talk about developer narcissism, but that's for another time.
+
+Even though I am quite certain it was told to me as a joke, it gives a little
+peek of this certain form of mindset; "What I do is fantastic and you should
+bask in its glory". It's a very good thing to be confident in your code, but it
+is important to not get reckless.  I am going to make the simple assumption
+that a big part of the code that you write is written while in some kind of a
+team. Even if you are the aforementioned Linus Torvalds, as soon as someone
+else modifies your code, it's not only your code anymore and you cannot be sure
+that it works exactly as you left it.
+
+In such a situation, tests can actually provide to be a glue of understanding.
+Well written tests will act as a specification or documentation of what your
+code should do, as opposed to the code, which has the limitation to only show
+what it currently does. I'll actually get back to this a little while down in
+my talk.
+
+= Why I think people don't test =
+So, why aren't people testing their code?
+
+== Insulting ==
+The main reason is that I think that it is received as somewhat insulting.
+When I ask you the question "Do your test your code?", it comes with the
+implication that I don't trust you as a developer. Which I don't, again, in a
+very loving way. As long as there is a way for you to provide repeatable
+evidence that the code you have written actually does what you intended it to
+do, having that evidence will always triumph over not having it.  However,
+without that explanation, it's mostly the insulting implication left. And being
+insulted as the first feeling when introduced to something isn't really the
+best kind of introduction.
+
+== Sites and examples suck ==
+Another reason is that most sites and documentation about testing code are
+really, really bad. They either assume that you have already reached testing
+Zen or they have the worst examples ever.  self.assertEqual(1 + 1, 2)  is
+probably the most common one, and I cannot imagine anyone who is not already
+into testing reading that feeling anything other than "Well, that seems
+incredibly pointless".
+
+== Scary ==
+So, when you have something that is basically insulting your competence and is
+very hard to get into by your own, you have something that will seem very
+scary. And, if you so happen to be a brave and determined person and decide to
+wallow on into the world of testing anyway, you'll quickly find that it is
+scarier than you thought. There are a lot of testing forms which all require
+different mindsets, and you probably have no idea where to start.
+
+So, to ease on that, let's begin with the factual part; the types of testing
+
+= Types of testing =
+There are two main types of testing.
+
+== Unit testing ==
+The first main type is unit testing. A unit test is a test that tests a very
+small piece of your code, preferably as small as possible.
+As an example, I'll show you some code!
+
+Here, we have a class called StringFilter, which has a method called
+cummings_filter.  The cummings filter takes any string and converts it to the
+style used by the American poet e.e. cummings; all lowercase. This is silly and
+not at all useful, but it's a pretty good base for a simple test.
+
+To this class, we have this test class in our test file. The class is
+inheriting from the Python stdlib module unittest and defines one test method
+called test_cummings_filter(). The first thing this test method does is to
+create an instance of the StringFilter class, call the cummings filter and
+store the result. Then, it uses an inherited method called assertEqual, which
+will compare its two arguments. If the arguments are not equal, the test will
+raise a special kind of exception that signals that the test failed.
+
+== Integration testing ==
+The second main type of testing is intregration testing, sometimes called
+functional testing. While a unit test is supposed to test as small units as
+possible, an integration test is supposed to test the bigger picture.
+
+As an example, assume that we run a website. This website has a register page.
+A good integration test would be to test that if we submit a POST request
+containing proper registration data (username, password, email) to the register
+page, a user with those details should be in the database. Likewise, we could
+also test the cases of bad registration data (username taken, short
+password, invalid email, etc.) and make sure that in these cases, no user was
+made and an error message was returned to the user.
+
+Integration tests are written almost exactly like unit tests, with test classes
+and test methods like in the unit test example, but they execute different
+things. In this example, we would probably need some kind of test server
+running the registration code and a client class that could make post requests.
+(Django comes with both of these, and they are both awesome)
+
+== They are equally important ==
+Just as with the comparison between manual testing and automatic testing, unit
+tests and integration tests complement each other. While they end up running on
+mostly the same code, unit tests can catch subtle errors that integration tests
+don't check for, and integration tests can find that a combination of methods
+can produce errors in a way that unit tests will not find.
+
+I recently heard a story about a guy who wrote a simple kind of network gateway
+for his company. It was a quick one man project, and as he wrote it, he wrote
+unit tests covering everything and it felt awesome. When he went to demo his
+end product to his bosses, nothing worked. It just stopped at the beginning and
+didn't do anything else. His bosses thought is was a joke, and he had to leave
+embarrassed to fix his errors and demo later again that week. He had grown so
+confident in his unit tests that he forgot to actually try his gateway from the
+very start to the very finish. This guy is now, as I understood it, a big
+advocate for writing integration tests.
+
+= Three benefits of testing =
+So, know that we know of the main forms of testing, we should also get to know
+the real _why_ behind testing.
+
+== You get proof that your code works ==
+This is kind of obvious, but nevertheless very important. You have repeatable
+machine evidence that your code is working as you intended it to.  As you write
+tests, you'll catch the little mistakes at the very once, and you can probably
+spare yourself from explaining to anyone else why you didn't catch that when
+you wrote it. And, as I mentioned before, a machine can test things a
+million times faster than you can manually, so you can check your code at
+almost any given time.
+
+== You get confidence in your code ==
+With good enough coverage, you can fuck around in your code, and when
+you've made changes, you can run your tests and see that, oh shit, the tests
+aren't passing, because they were aligned with the earlier requirements.
+
+Assume that we have a blog model with the typical blog model fields (title,
+body, creation date, tags, view count etc.) and we have decided to drop the
+view_count field. If you do that and then run your tests again, some of them
+should now fail. If you fix them, and run the tests again, you can rest assured
+that nothing else will break as a result of your changes. This feeling is
+awesome.
+
+== You'll write better code ==
+It's really really hard to test bad code. To be able to test your code, you
+need to write it in ways that are generally considered good practice. The most
+important of which, being decoupled code. To be able to unit test a piece of
+code, it pretty much needs to reside in its own method. Once one is used to
+writing in that way, you'll be writing much cleaner and much more reusable
+code.
+
+
+= The tools that will help you =
+So, now that we know that testing is fantastic, I'll give some short hints
+about some tools that are very important when testing.
+
+== Mindsets ==
+=== TDD ===
+Test Driven Development, or TDD, is a certain style of development that
+strongly ties unit testing directly into development. When doing TDD, you start
+with writing a small failing unit test for whatever you are about to code, as
+early into the method as possible. Then, you write code until this test passes.
+Then, you extend the test the next step into the method, and repeat.
+
+TDD is intended to code in a way that almost automatically produces unit tests
+for you, and it works really well for those that really use it.
+
+=== BDD ===
+Behaviour Driven Development, or BDD, is a superset of TDD that incorporates
+the rest of the company in the testing process. Together with your managers or
+bosses you write down a list of specifications, in pure English, that describes
+the features and use cases of the product. Then you use a tool to map each item
+in this list of specifications to a series of tests, and when all items have
+fully passing tests, the product is done.
+
+BDD is intended to take testing into the entire company rather than just the
+developers, and while I have never used it myself I am quite certain that it
+can be very useful when used.
+
+== Continuous Integration ==
+Continuous integration systems, or CI systems are systems that run your tests
+on your code when you commit and push it to your repos. Should you have
+committed code that introduces failing tests or other errors, the systems will
+notify you so that you can drop whatever else you've started doing and fix
+whatever you broke.
+CI systems also provide cool graphs with stats about your tests, which are
+often very useful.
+
+=== Jenkins/Hudson ===
+One of the most widely used open source CI systems is Jenkins. It was once
+called Hudson, but when Oracle bought it in early 2011 it took the open source
+software community all of 2.5 seconds to fork and rebrand it. We use it at our
+company, and we deeply recommend it!
+
+==== Github; CI Joe, Travis ====
+For those of you cool enough to use Github, there are several options that are
+integrated into Github. One of them being CI Joe, which is written by the
+Github guys, and the other being Travis which is for open source only. Both of
+these have a lot of features, my personal favorite being automatic build and
+test of pull requests, which can probably save everyone time.
+
+== Test tools for Python ==
+=== nose and py.test ===
+These are both frameworks for writing and running tests in Python. They are
+very capable and extensible and offer things like running a single test only,
+i.e. the one you are currently writing, so that you don't need to wait through
+all the tests. They both also support plugins.
+
+=== coverage ===
+The main test plugin that everyone should run. It gives reports on what lines
+have been tested in your code or not. It is absolutely priceless and you should
+never test without it.
+
+= Epilogue / Random thoughts =
+
+== Until fear turns to boredom ==
+While doing research for this talk, I found a very interesting rule of thumb
+when trying to decide how much you should test: "Test until fear turns into
+boredom". I don't think that it always applies, but it probably applies when
+you are trying to add tests to your previously untested code base.
+
+== Not a panacea ==
+Testing is not a panacea; It will unfortunately not automatically turn your
+code into an unbreakable marvel of science. However, testing is good practice
+and a way to avoid avoidable problems and write better code faster.
+
+= Reconsider testing (pls :3) =
+And, as my very last point of this talk, if you only take one little thing out
+of my it, let it be this: if you are not already incorporating automated
+testing into your development, I most humbly implore you to reconsider doing so.
+You'll be a better developer for it.
+
+Thank you.
+
+links
+http://artofunittesting.com/
+embracing the suck / jeff atwood
