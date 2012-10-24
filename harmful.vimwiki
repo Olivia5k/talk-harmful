@@ -11,8 +11,9 @@ You guys that raised your hands can be one of three things:
  * Liars
  * Fools
 
-The rest of you, you should bitch slap yourselves; physically or mentally;
-doesn't matter. You should have that feeling of confidence in your code. But,
+The rest of you, I kinda understand how you're feeling. As developers, we are
+responsible for keeping whatever we create very awesome, but that can be very
+hard. You should have that feeling of confidence in your code. But,
 most people don't, and I think I know why.
 
 = Too many people don't test their code =
@@ -22,14 +23,15 @@ Why does this matter? That's pretty simple actually. It's because...
 And I say that in the most loving, respectful of ways. We developers have so
 much power to to create awesome things, but failure is unfortunately not only
 an option; it's the default. Developing code is incredibly powerful, but it is
-also very hard.  As a developer, when you are writing code, you are constantly
-only one keystroke away from a mistake, and you are with no doubt surrounded by
-errors. Syntax errors, parser errors, type errors, semantic errors. All of
-these, especially that pesky last one, are almost inevitable unless you write
-completely perfect code all the time. So, unless you are Linus Torvalds, this
-talk is most lovingly directed to you, and here is why:
+also very hard. It's not even really your fault. As a developer, when you are
+writing code, you are constantly only one keystroke away from a mistake, and
+you are with no doubt surrounded by errors. Syntax errors, parser errors, type
+errors, semantic errors. All of these, especially that last one, are
+almost inevitable unless you write completely perfect code all the time. So,
+unless you are Linus Torvalds, this talk is most lovingly directed to you, and
+here is why:
 
-Testing your code is a very effective way to avoid errors as much as possible.
+Testing your code is a very effective way to avoid avoidable errors.
 
 So, before I continue telling you why and how you should stop sucking and be
 awesome instead, I would like to tell you what others I talk to usually say
@@ -49,11 +51,11 @@ once you get comfortable with writing tests.
 A reason very related to that one is:
 
 == There is too much untested code already; writing tests would take months ==
-Actually a real problem. We had this problem at the company where I work; A lot
-of code, no tests, and really nowhere to start.  Fortunately, this is a problem
-of approach. I can tell you straight away that just sitting down and writing
-tests for four months is probably going to give you nothing. You simply cannot
-do everything at once.
+This is actually a very real problem. We had this problem at the company where
+I work; A lot of code, no tests, and really nowhere to start.  Fortunately,
+this is a problem of approach. I can tell you straight away that just sitting
+down and writing tests for four months is probably going to give you nothing.
+You simply cannot do everything at once.
 
 What you should do instead is to adapt the mindset that you should test all new
 features. So, before you consider your feature done and push it upstream, you
@@ -63,7 +65,7 @@ And, related to that, there is this kinda nice sentiment I've heard a couple of
 times that, whenever you are fixing some part of the code, you should make it
 just a little bit tidier and cleaner than when you found it. The same should
 apply to testing; when you fix a bug, add a test for it, if only to make sure
-that you actually fixed it properly.
+that you actually fixed the bug properly.
 
 By following these two pretty simple guidelines, your code will eventually
 evolve a test base of the things you have deemed to be important.
@@ -98,11 +100,11 @@ that it works exactly as you left it.
 In such a situation, tests can actually provide to be a glue of understanding.
 Well written tests will act as a specification or documentation of what your
 code should do, as opposed to the code, which has the limitation to only show
-what it currently does. I'll actually get back to this a little while down in
-my talk.
+what it currently does.
 
 = Why I think people don't test =
-So, why aren't people testing their code?
+So, why aren't people testing their code? I think it boils down to three
+related issues.
 
 == Insulting ==
 The main reason is that I think that it is received as somewhat insulting.
@@ -154,6 +156,9 @@ store the result. Then, it uses an inherited method called assertEqual, which
 will compare its two arguments. If the arguments are not equal, the test will
 raise a special kind of exception that signals that the test failed.
 
+This is of course not very much better than the 1 + 1 example I gave before,
+but it gives a little more insight to how you actually write a unit test.
+
 == Integration testing ==
 The second main type of testing is intregration testing, sometimes called
 functional testing. While a unit test is supposed to test as small units as
@@ -162,10 +167,10 @@ possible, an integration test is supposed to test the bigger picture.
 As an example, assume that we run a website. This website has a register page.
 A good integration test would be to test that if we submit a POST request
 containing proper registration data (username, password, email) to the register
-page, a user with those details should be in the database. Likewise, we could
-also test the cases of bad registration data (username taken, short
-password, invalid email, etc.) and make sure that in these cases, no user was
-made and an error message was returned to the user.
+page, a user with those details should be in the database after the request is
+done. Likewise, we could also test the cases of bad registration data
+(username taken, short password, invalid email, etc.) and make sure that in
+these cases, no user was made and an error message was returned to the user.
 
 Integration tests are written almost exactly like unit tests, with test classes
 and test methods like in the unit test example, but they execute different
@@ -204,16 +209,19 @@ million times faster than you can manually, so you can check your code at
 almost any given time.
 
 == You get confidence in your code ==
-With good enough coverage, you can fuck around in your code, and when
-you've made changes, you can run your tests and see that, oh shit, the tests
+With good enough unit tests, you can fuck around in your code, and when
+you've made changes, you can run your tests and see that the tests
 aren't passing, because they were aligned with the earlier requirements.
 
-Assume that we have a blog model with the typical blog model fields (title,
-body, creation date, tags, view count etc.) and we have decided to drop the
-view_count field. If you do that and then run your tests again, some of them
-should now fail. If you fix them, and run the tests again, you can rest assured
-that nothing else will break as a result of your changes. This feeling is
-awesome.
+Let's think back to the registration page example I discussed when talking
+about integration testing. Assume that we want to remove the username field
+because, let's face it, usernames are so 1999; everyone just uses email
+nowadays. If I just drop the username field from the user model and run the
+tests, the test errors will point me to all the places that I need to change.
+When I am done changing those and the tests are passing, I can be confident
+that my changes did not break anything else.
+
+That feeling is awesome.
 
 == You'll write better code ==
 It's really really hard to test bad code. To be able to test your code, you
@@ -222,7 +230,6 @@ important of which, being decoupled code. To be able to unit test a piece of
 code, it pretty much needs to reside in its own method. Once one is used to
 writing in that way, you'll be writing much cleaner and much more reusable
 code.
-
 
 = The tools that will help you =
 So, now that we know that testing is fantastic, I'll give some short hints
@@ -287,11 +294,9 @@ never test without it.
 
 = Epilogue / Random thoughts =
 
-== Until fear turns to boredom ==
-While doing research for this talk, I found a very interesting rule of thumb
-when trying to decide how much you should test: "Test until fear turns into
-boredom". I don't think that it always applies, but it probably applies when
-you are trying to add tests to your previously untested code base.
+== Only test what's yours ==
+When using a framework such as Django, it is important not to test things that
+is Djangos responsibilities.
 
 == Not a panacea ==
 Testing is not a panacea; It will unfortunately not automatically turn your
@@ -300,7 +305,7 @@ and a way to avoid avoidable problems and write better code faster.
 
 = Reconsider testing (pls :3) =
 And, as my very last point of this talk, if you only take one little thing out
-of my it, let it be this: if you are not already incorporating automated
+of it, let it be this: if you are not already incorporating automated
 testing into your development, I most humbly implore you to reconsider doing so.
 You'll be a better developer for it.
 

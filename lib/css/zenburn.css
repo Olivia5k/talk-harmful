@@ -7,7 +7,7 @@ based on dark.css by Ivan Sagalaev
 
 pre code {
   display: block; padding: 0.5em;
-  background: #3F3F3F;
+  background: #1c1b1a;
   color: #DCDCDC;
 }
 
@@ -18,7 +18,7 @@ pre .django .keyword,
 pre .css .class,
 pre .css .id,
 pre .lisp .title {
-  color: #E3CEAB;
+  color: #ff2c4b;
 }
 
 pre .django .template_tag,
@@ -65,7 +65,7 @@ pre .apache .tag,
 pre .nginx .built_in,
 pre .tex .command,
 pre .input_number {
-    color: #efef8f;
+    color: #f4cf86;
 }
 
 pre .dos .winutils,
@@ -75,7 +75,7 @@ pre .ruby .symbol .keyword,
 pre .ruby .symbol .keymethods,
 pre .ruby .string,
 pre .ruby .instancevar {
-  color: #DCA3A3;
+  color: #099dff;
 }
 
 pre .diff .deletion,
@@ -93,7 +93,7 @@ pre .attr_selector,
 pre .pseudo,
 pre .apache .cbracket,
 pre .tex .formula {
-  color: #CC9393;
+  color: #099dff;
 }
 
 pre .shebang,
