@@ -262,7 +262,7 @@ body {
 	margin: 15px auto;
 
 	text-align: left;
-	font-size: 0.55em;
+	font-size: 0.65em;
 	font-family: monospace;
 	line-height: 1.2em;
 
@@ -326,8 +326,8 @@ body {
 .reveal .controls div {
 	position: absolute;
 	opacity: 0.1;
-	width: 0; 
-	height: 0; 
+	width: 0;
+	height: 0;
 	border: 12px solid transparent;
 
 	-webkit-transition: opacity 0.2s ease;

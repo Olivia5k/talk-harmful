@@ -168,7 +168,7 @@ As an example, assume that we run a website. This website has a register page.
 A good integration test would be to test that if we submit a POST request
 containing proper registration data (username, password, email) to the register
 page, a user with those details should be in the database after the request is
-done. Likewise, we could also test the cases of bad registration data
+done. Here, we should also test the cases of bad registration data
 (username taken, short password, invalid email, etc.) and make sure that in
 these cases, no user was made and an error message was returned to the user.
 
