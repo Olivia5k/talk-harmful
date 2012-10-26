@@ -6,6 +6,14 @@ they should. First delivered at
 ![PySthlm Meetup #10](http://www.pythonista.se/events/86502532/)
 at the Spotify HQ.
 
+FAQ
+---
+
+> How does it look so awesome?
+
+It's using a presentation framework called
+[reveal.js](https://github.com/hakimel/reveal.js), which is very
+fantastic and very recommended.
 
 Contributing
 ------------
