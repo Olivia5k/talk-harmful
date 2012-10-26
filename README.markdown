@@ -3,7 +3,7 @@ Developers considered harmful
 
 A quick lightning talk outlining why people are not testing their code and why
 they should. First delivered at
-![PySthlm Meetup #10](http://www.pythonista.se/events/86502532/)
+[PySthlm Meetup #10](http://www.pythonista.se/events/86502532/)
 at the Spotify HQ.
 
 FAQ
